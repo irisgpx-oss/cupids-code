@@ -267,11 +267,12 @@ app.post("/submit-quiz", (req, res) => {
 });
 
 // MATCH ROUTE
+// MATCH ROUTE
 app.get("/match", (req, res) => {
   const username = req.query.username;
 
   db.all(`SELECT * FROM quiz_answers`, (err, users) => {
-    console.log("All quiz users:", users); // ⭐ ADD THIS
+    console.log("All quiz users:", users);
 
     if (err) return res.status(500).json({ error: "Database error" });
 
@@ -297,6 +298,15 @@ app.get("/match", (req, res) => {
   });
 });
 
+// ⭐ ADD THIS ADMIN ROUTE HERE
+app.get("/admin/users", (req, res) => {
+  db.all("SELECT * FROM users", (err, rows) => {
+    if (err) {
+      return res.status(500).json({ error: "Database error" });
+    }
+    res.json(rows);
+  });
+});
 
 // START SERVER
 app.listen(port, () => {
