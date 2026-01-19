@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cupid's Code</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+</head>
+
+<body class="quiz-page">
+
+  <!-- TITLE -->
+  <h1 class="title-box">
+    <span class="block-text">CUPID'S</span> 
+    <span class="cursive-text">code</span>
+  </h1>
+
+  <!-- LOGIN POPUP -->
+  <div id="loginpopup" class="popup" style="display:none;">
+    <div class="popup-content">
+      <span class="close" id="closepopup">&times;</span>
+
+      <!-- LOGIN FORM -->
+      <form id="loginForm">
+        <h2>Login</h2>
+        <input type="text" id="login-username" placeholder="username" required>
+        <input type="password" id="login-password" placeholder="password" required>
+        <button type="submit">Submit</button>
+        <div id="login-message" class="message"></div>
+        <p>Don’t have an account? <span class="switch-link" id="showSignup">Sign Up</span></p>
+      </form>
+
+      <!-- SIGNUP FORM -->
+      <form id="signupForm" style="display:none;">
+        <h2>Sign Up</h2>
+        <input type="text" id="signup-username" placeholder="username" required>
+        <input type="password" id="signup-password" placeholder="password" required>
+        <button type="submit">Create Account</button>
+        <div id="signup-message" class="message"></div>
+        <p>Already have an account? <span class="switch-link" id="showLogin">Login</span></p>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- AUTO‑LOGIN CHECK -->
+  <script>
+    const savedUser = localStorage.getItem("username");
+
+    if (!savedUser) {
+      // User NOT logged in → show popup
+      document.getElementById("loginpopup").style.display = "block";
+    } else {
+      // User IS logged in → hide popup
+      document.getElementById("loginpopup").style.display = "none";
+    }
+  </script>
+
+  <!-- QUIZ TITLE -->
+  <h1 class="quiz-title">Find Your Match</h1>
+
+  <!-- QUIZ FORM -->
+  <form id="quizForm">
+
+    <h2>Your Details</h2>
+    <label>Name:</label>
+    <input type="text" name="name" required>
+
+    <label>Age:</label>
+    <input type="number" name="age" required>
+
+    <label>Height:</label>
+    <input type="text" name="height" required>
+
+    <h2>I would describe myself as:</h2>
+    <label><input type="radio" name="personality" value="introvert" required> Introvert</label>
+    <label><input type="radio" name="personality" value="extrovert"> Extrovert</label>
+    <label><input type="radio" name="personality" value="ambivert"> Ambivert</label>
+
+    <h2>What is your ambition?</h2>
+    <label><input type="radio" name="ambitions" value="university" required> University</label>
+    <label><input type="radio" name="ambitions" value="tafe"> TAFE</label>
+    <label><input type="radio" name="ambitions" value="full time job out of high school"> Full time job</label>
+
+    <h2>In a relationship, I prefer:</h2>
+    <label><input type="radio" name="partner_preference" value="outgoing adventurous" required> Outgoing, adventurous partner</label>
+    <label><input type="radio" name="partner_preference" value="introverted soft"> Introverted, soft partner</label>
+    <label><input type="radio" name="partner_preference" value="studious ambitious"> Studious, ambitious partner</label>
+    <label><input type="radio" name="partner_preference" value="athletic bubbly"> Athletic, bubbly partner</label>
+
+    <h2>Your Zodiac Sign:</h2>
+    <select name="zodiac" required>
+      <option value="">Select</option>
+      <option>aries</option>
+      <option>taurus</option>
+      <option>gemini</option>
+      <option>cancer</option>
+      <option>leo</option>
+      <option>virgo</option>
+      <option>libra</option>
+      <option>scorpio</option>
+      <option>sagittarius</option>
+      <option>capricorn</option>
+      <option>aquarius</option>
+      <option>pisces</option>
+    </select>
+
+    <h2>Friends would describe me as:</h2>
+    <select name="friend_description" required>
+      <option value="">Select</option>
+      <option>funny</option>
+      <option>loyal</option>
+      <option>smart</option>
+      <option>kind</option>
+      <option>considerate</option>
+      <option>honest</option>
+      <option>responsible</option>
+    </select>
+
+    <h2>I prefer:</h2>
+    <label><input type="radio" name="height_preference" value="shorter" required> Someone shorter than me</label>
+    <label><input type="radio" name="height_preference" value="taller"> Someone taller than me</label>
+
+    <h2>I prefer:</h2>
+    <label><input type="radio" name="age_preference" value="younger" required> Someone younger than me</label>
+    <label><input type="radio" name="age_preference" value="older"> Someone older than me</label>
+    <label><input type="radio" name="age_preference" value="sameage"> Same age as me</label>
+
+    <h2>My love language is:</h2>
+    <select name="love_language" required>
+      <option value="">Select</option>
+      <option>physical touch</option>
+      <option>acts of service</option>
+      <option>quality time</option>
+      <option>receiving gifts</option>
+      <option>words of affirmation</option>
+    </select>
+    
+     <h2>How many kids do you wish to have:</h2>
+    <select name="kids_preference" required>
+      <option value="">Select</option>
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4+</option>
+      <option>none</option>
+    </select>
+
+     <h2>What is your ideal first date:</h2>
+    <select name="first_date" required>
+      <option value="">Select</option>
+      <option>going to the movies</option>
+      <option>going out for dinner</option>
+      <option>going to the arcade / bowling</option>
+      <option>going to a theme park</option>
+      <option>having a picnic</option>
+      <option>going to the beach / pools</option>
+    </select>
+
+    <h2>What kind of relationship are you looking for?</h2>
+    <label><input type="radio" name="relationship_type" value="serious long term" required> Serious long term</label>
+    <label><input type="radio" name="relationship_type" value="casual short term"> Casual short term</label>
+    <label><input type="radio" name="relationship_type" value="friends with something more"> Friends with something more</label>
+
+    <h2>Your biggest insecurity:</h2>
+    <select name="insecurity" required>
+      <option value="">Select</option>
+      <option>your looks</option>
+      <option>your personality being too much</option>
+      <option>your personality being too little</option>
+      <option>your humour</option>
+      <option>your social skills</option>
+      <option>your intelligence</option>
+      <option>financial status</option>
+    </select>
+
+    <h2>Your biggest flaw in a relationship:</h2>
+    <select name="flaw" required>
+      <option value="">Select</option>
+      <option>commitment issues</option>
+      <option>jealousy</option>
+      <option>fear of abandonment</option>
+      <option>inability to be vulnerable</option>
+      <option>self deprecation</option>
+    </select>
+
+ <h2>What would you say is a dealbreaker in a relationship:</h2>
+    <select name="dealbreaker" required>
+      <option value="">Select</option>
+      <option>dishonesty</option>
+      <option>lack of effort</option>
+      <option>disrespect</option>
+      <option>lack of communication</option>
+      <option>emotional unavailability</option>
+    </select>
+    
+    <br><br>
+    <button type="submit">Submit Quiz</button>
+
+  </form>
+
+  <!-- SCRIPTS -->
+  <script src="script.js"></script>
+  <script src="quiz.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cupid's Code</title>
+  <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+
+</head>
+<body>
+ <h1 class="title-box">
+
+  <div class="top-line">
+    <span class="block-text">CUPID'S</span>
+    <span class="cursive-text">code</span>
+    <span class="sub-text">: 1 MATCH ❤️‍🔥
+    </span>
+  </div>
+
+<div class="sub-text2">
+  endless sparks 🧨
+</div>
+
+
+</h1>
+
+
+
+
+
+ <nav class="navbar">
+    <ul>
+      <li><a href="#">HOME</a></li>
+<li><a href="quiz.html">FIND YOUR MATCH!</a></li>
+      <li><a href="match.html">YOUR MATCH &#10084;</a></li>
+   
+    </ul>
+  </nav>
+<div class="content">
+
+  <div class="intro">
+    <h2>Welcome to Cupid’s Code</h2>
+    <p>In a world where technology often speeds past the human heart, Cupid’s Code was created to slow things down and bring people back to what matters most: genuine connection. We understand that finding someone who truly resonates with you can feel like searching for a needle in a haystack, especially when so many platforms focus only on appearances or quick swipes. That’s why our mission is different. We’ve built a space where you can pause, reflect, and discover relationships that are rooted in compatibility, shared values, and authentic chemistry. Cupid’s Code is more than just a matchmaking site — it’s a journey toward meaningful companionship, whether that means friendship, romance, or something in between.
+    <h3>How It Works</h3>
+    <p>At the heart of Cupid’s Code lies our thoughtfully designed quiz, which is not just a set of questions but a gateway to understanding yourself and others on a deeper level. Each answer you provide helps us uncover the unique aspects of your personality, lifestyle, and relationship goals. Instead of leaving you to sift through endless profiles, we use your responses to highlight matches who align with your values and outlook on life. This process ensures that every connection you make has the potential to grow into something lasting. Think of the quiz as a mirror that reflects your individuality while also opening the door to people who complement and enrich your journey.
+      <h4>Your Journey Starts Here</h4>
+    <p>Before you dive into the quiz, take a moment to imagine the possibilities that await you. Picture conversations that spark joy, laughter that feels effortless, and bonds that grow stronger with time. This is the experience we want to create for you: not fleeting encounters, but meaningful stories that could shape your future. Cupid’s Code is here to guide you through each step, turning the search for love into an exciting adventure rather than a stressful task. Your journey starts with a single click, and from there, the path unfolds toward connections that could change your life.
+    </div>
+  <div class="pictures">
+    <img id="slideshow" alt="slideshow">
+  </div>
+</div>
+<script>
+        const images = [
+            'cc1.jpeg',
+            'cc2.jpeg',
+            'cc3.jpeg',]
+        const imgEL = document.getElementById('slideshow');
+        let index = 0;
+      imgEL.src = images[index];
+        setInterval(() => {
+  imgEL.style.opacity = 0;
+  setTimeout(() => {
+    index = (index + 1) % images.length;
+    imgEL.src = images[index];
+    imgEL.style.opacity = 1;
+  }, 400);
+}, 2000);
+</script>
+</body> 
+</html>

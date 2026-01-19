@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Your Match • Cupid's Code</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+</head>
+
+<body class="quiz-page">
+
+  <!-- HEADER -->
+  <h1 class="title-box">
+    <div class="top-line">
+      <span class="block-text">CUPID'S</span>
+      <span class="cursive-text">code</span>
+      <span class="sub-text2"> : your perfect match awaits 💘</span>
+    </div>
+  </h1>
+
+  <!-- LOGOUT BUTTON (always visible if logged in) -->
+  <button id="logoutBtn" style="
+    position:absolute;
+    top:20px;
+    right:20px;
+    padding:10px 18px;
+    background:#de5577;
+    color:white;
+    border:none;
+    border-radius:8px;
+    font-weight:bold;
+    cursor:pointer;
+  ">
+    Log Out
+  </button>
+
+  <!-- MATCH RESULTS CONTAINER -->
+  <div id="matchresults">
+    <h2>Finding your match...</h2>
+  </div>
+
+  <!-- MAIN MATCH SCRIPT -->
+  <script>
+    const username = localStorage.getItem("username");
+
+    if (!username) {
+      // Hide logout button if no user is logged in
+      document.getElementById("logoutBtn").style.display = "none";
+
+      document.getElementById("matchresults").innerHTML = `
+        <h2>You must log in first.</h2>
+        <a href="homepage.html" style="
+          display:inline-block;
+          padding:10px 20px;
+          background:#faaabe;
+          color:white;
+          border-radius:6px;
+          text-decoration:none;
+          font-weight:bold;
+          margin-top:10px;
+        ">Go to Home</a>
+      `;
+    } else {
+      // Fetch match data
+      fetch(`/match?username=${username}`)
+        .then(res => res.json())
+        .then(data => {
+          const box = document.getElementById("matchresults");
+
+          if (!data.match) {
+            box.innerHTML = `
+              <h2>Your spark has yet to be lit..</h2>
+              <p>Tell your friends to take the quiz so we can find a match ❤️‍🔥</p>
+            `;
+            return;
+          }
+
+          const m = data.match;
+
+          box.innerHTML = `
+            <h2 style="color:#faaabe">Your Best Match !</h2>
+            <h1 style="font-size:2.2rem; color:#de5577;">${m.name}</h1>
+
+            <p style="font-weight:bold; color:#faaabe;">
+              Compatibility Score:
+              <span style="color:#faaabe; font-size:1.4rem;">
+                ${data.score}%
+              </span>
+            </p>
+
+            <hr style="margin:20px 0; border:1px solid #de899e;">
+
+            <p><strong>Age:</strong> ${m.age}</p>
+            <p><strong>Personality:</strong> ${m.personality}</p>
+            <p><strong>Zodiac:</strong> ${m.zodiac}</p>
+
+            <br>
+
+            <a href="homepage.html" style="
+              display:inline-block;
+              padding:10px 20px;
+              background:#faaabe;
+              color:white;
+              border-radius:6px;
+              text-decoration:none;
+              font-weight:bold;
+              margin-bottom:10px;
+            ">Back to Home</a>
+          `;
+        });
+    }
+  </script>
+
+  <!-- LOGOUT HANDLER -->
+  <script>
+    document.getElementById("logoutBtn").addEventListener("click", () => {
+      localStorage.clear();
+      window.location.href = "homepage.html";
+    });
+  </script>
+
+</body>
+</html>
