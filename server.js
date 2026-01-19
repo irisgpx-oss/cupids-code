@@ -318,6 +318,39 @@ app.get("/admin/quiz", (req, res) => {
     res.json(rows);
   });
 });
+// Admin route to view everyone's best match
+app.get("/admin/matches", (req, res) => {
+  db.all("SELECT * FROM quiz_answers", (err, users) => {
+    if (err) {
+      return res.status(500).json({ error: "Database error" });
+    }
+
+    const results = [];
+
+    for (const user of users) {
+      let bestMatch = null;
+      let bestScore = -Infinity;
+
+      for (const other of users) {
+        if (other.username === user.username) continue;
+
+        const score = calculateCompatibility(user, other);
+        if (score > bestScore) {
+          bestScore = score;
+          bestMatch = other;
+        }
+      }
+
+      results.push({
+        username: user.username,
+        bestMatch: bestMatch ? bestMatch.username : null,
+        score: bestScore
+      });
+    }
+
+    res.json(results);
+  });
+});
 
 
 // START SERVER
