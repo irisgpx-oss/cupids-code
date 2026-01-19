@@ -299,6 +299,7 @@ app.get("/match", (req, res) => {
 });
 
 // ⭐ ADD THIS ADMIN ROUTE HERE
+// Admin route to view all registered users
 app.get("/admin/users", (req, res) => {
   db.all("SELECT * FROM users", (err, rows) => {
     if (err) {
@@ -307,6 +308,17 @@ app.get("/admin/users", (req, res) => {
     res.json(rows);
   });
 });
+
+// Admin route to view all quiz answers
+app.get("/admin/quiz", (req, res) => {
+  db.all("SELECT * FROM quiz_answers", (err, rows) => {
+    if (err) {
+      return res.status(500).json({ error: "Database error" });
+    }
+    res.json(rows);
+  });
+});
+
 
 // START SERVER
 app.listen(port, () => {
