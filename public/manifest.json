@@ -1,0 +1,25 @@
+{
+  "name": "Cupid's Code",
+  "short_name": "Cupid",
+  "start_url": "/homepage.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ff4d6d",
+  "icons": [
+    {
+      "src": "cc1.jpeg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "cc2.jpeg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "cc3.jpeg",
+      "sizes": "1024x1024",
+      "type": "image/jpeg"
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+root/      - Contains backend files such as server.js, users.db, and configuration files.
+public/    - Contains all frontend assets (HTML, CSS, JS, images).

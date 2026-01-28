@@ -1,0 +1,2 @@
+This project uses a Bash script (generate_structure.sh) to routinely generate the core folders and files required for the application. 
+The script automatically creates the 'public' directory and all essential frontend and backend files, ensuring consistent project setup.

@@ -111,3 +111,6 @@ showLogin.onclick = () => {
   signupForm.style.display = "none";
   loginForm.style.display = "block";
 };
+fetch("/admin/quiz")
+  .then(res => res.json())
+  .then(data => console.log(data));
